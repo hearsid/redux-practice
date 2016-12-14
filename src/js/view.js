@@ -9,13 +9,28 @@ export function render(el, state) {
 }
 
 function renderApp(input, todoList) {
-    if(isEnabled('renderBottom')) {
+    if (isEnabled('renderBottom')) {
         return renderAddTodoAtBottom(input, todoList);
-    } else {
+    }
+    // only one feature test can be enabled at a time since it is coming as location hash so include it as elseIf
+    else if (isEnabled('filter')) {
+        return renderAddTodoAtBottom(input, todoList)+renderFilterBar();
+    }
+    else {
         return renderAddTodoAtTop(input, todoList);
     }
 }
 
+/**
+ * @description It will be a concatenation of the todoApp and filter bar
+ */
+function renderFilterBar() {
+    return `<div id="filterBar">
+          <input type="radio" name="filter" value="Show all" checked> Show all <br>
+          <input type="radio" name="filter" value="Show open" > Show open <br>
+          <input type="radio" name="filter" value="Show closed" > Show closed <br>
+    </div>`;
+}
 function renderAddTodoAtTop(input, todoList) {
     return `<div id="app">
         ${input}

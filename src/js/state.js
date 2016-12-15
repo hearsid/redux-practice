@@ -1,4 +1,6 @@
-import {createStore} from './lib/state';
+//import {createStore} from './lib/state';
+// createStore in redux has all methods as in lib/state so using it
+import { createStore } from 'redux';
 import Manager from './Manager';
 
 const initialState = {
@@ -86,11 +88,15 @@ function todoChangeHandler(state, change) {
             return newState;
         break;
 
+        default:
+            return state
+
 
 
     }
 }
 
 
-var theState = JSON.parse(sessionStorage.defaultState) || initialState;
-export const todos = createStore(todoChangeHandler, theState);
+// var theState = JSON.parse(sessionStorage.defaultState) || initialState;
+export const todos = createStore(todoChangeHandler, initialState);
+console.log(todos);

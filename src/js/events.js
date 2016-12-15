@@ -1,6 +1,6 @@
 import {todos} from './state';
 import {listen} from './lib/events';
-import {addTodo, toggleTodoState, filterTodos} from './actions';
+import {addTodo, toggleTodoState} from './actions';
 import {showAllTodo, showOpenTodo, showClosedTodo} from './filterActions';
 import Manager from './Manager';
 

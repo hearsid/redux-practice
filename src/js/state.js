@@ -45,7 +45,7 @@ function todoChangeHandler(state, change) {
                 text: change.text,
                 done: false
             });
-            Manager.defaultState = state;
+            Manager.defaultState = newState;
             return newState; // ideally shouldn't make change to a param but here since we are not returning state doing so
             break;
 
@@ -57,7 +57,7 @@ function todoChangeHandler(state, change) {
                     break;
                 }
             }
-            Manager.defaultState = state;
+            Manager.defaultState = newState;
             return newState;
             break;
         // Don't need to create another change handler since the change will be in the todos I can add the cases here
@@ -97,6 +97,6 @@ function todoChangeHandler(state, change) {
 }
 
 
-var theState = JSON.parse(sessionStorage.defaultState) || initialState;
+var theState = sessionStorage.defaultState ? JSON.parse(sessionStorage.defaultState) : initialState;
 export const todos = createStore(todoChangeHandler, theState);
 console.log(todos);

@@ -10,7 +10,9 @@ var elementOpen = IncrementalDOM.elementOpen,
 
 export function render(el, state) {
     // this method is subscribed for changes so store the state in sessionStorage here
-    sessionStorage.defaultState = JSON.stringify(state);
+    var stateToSave = Object.assign({}, state);
+    delete stateToSave.activeFilter;
+    sessionStorage.defaultState = JSON.stringify(stateToSave);
     // const todoItems = state.todos.map(renderTodoItem).join('');
 
 
@@ -68,7 +70,7 @@ function renderFilterBar(activeFilter) {
 
 function renderFilterRadioButton(option, activeFilter = {id: 'showAll'}) {
     var s1 = ['type', 'radio', 'name', 'filter', 'class', 'filter_selection', 'value', option.title,
-        'data-id', option.id, 'checked', (option.id == activeFilter.id) ? 'true' : 'false'];
+        'data-id', option.id, (option.id == activeFilter.id) ? 'checked' : 'data-blank', (option.id == activeFilter.id) ? 'true' : 'blank'];
     elementOpen('input', '', s1);
     elementClose('input');
     text(option.title);

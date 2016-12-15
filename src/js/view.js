@@ -1,6 +1,8 @@
 import {isEnabled} from './lib/feature';
 
 export function render(el, state) {
+    // this method is subscribed for changes so store the state in sessionStorage here
+    sessionStorage.defaultState = JSON.stringify(state);
     const todoItems = state.todos.map(renderTodoItem).join('');
     el.innerHTML = renderApp(
         renderInput(),

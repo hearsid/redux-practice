@@ -97,6 +97,6 @@ function todoChangeHandler(state, change) {
 }
 
 
-// var theState = JSON.parse(sessionStorage.defaultState) || initialState;
-export const todos = createStore(todoChangeHandler, initialState);
+var theState = JSON.parse(sessionStorage.defaultState) || initialState;
+export const todos = createStore(todoChangeHandler, theState);
 console.log(todos);

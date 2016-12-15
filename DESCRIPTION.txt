@@ -1,0 +1,12 @@
+Description of the tasks completed.
+Have completed the tasks WEB-103, WEB-120, WEB-203 and WEB-301 as mentioned in the mail by Patrick.
+
+Here are some details that may be helpful:
+1) Have included git commit messages after completing each tasks so the same can be checked by going to a particular commit in git log.
+2) As for WEB-120, have used sessionStorage.
+3) For WEB-203, have used redux.
+4) For WEB-301, decided to go with incremental-dom and implemented the same.
+
+Some more changes can make the code better :)
+Cheers,
+Sid

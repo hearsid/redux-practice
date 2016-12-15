@@ -19,13 +19,13 @@ export function registerEventHandlers() {
         const id = event.target.getAttribute('data-id'); 
 
         if(id == 'showAll') {
-            todos.dispatch(showAllTodo());
+            todos.dispatch(showAllTodo(id));
         }
         else if(id == 'showOpen') {
-            todos.dispatch(showOpenTodo());
+            todos.dispatch(showOpenTodo(id));
         }
         else if(id == 'showClosed') {
-            todos.dispatch(showClosedTodo());
+            todos.dispatch(showClosedTodo(id));
         }
         
     });

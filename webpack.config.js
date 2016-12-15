@@ -2,6 +2,7 @@
  * Created by pgotthardt on 14/01/16.
  */
 var path = require('path');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
     entry: ['babel-polyfill', path.normalize(__dirname + '/src/js/main')],
@@ -11,6 +12,9 @@ module.exports = {
         filename: 'bundle.js',
         path: path.join(__dirname, 'dist')
     },
+    plugins: [
+        new WebpackNotifierPlugin()
+    ],
     module: {
         loaders: [
             {

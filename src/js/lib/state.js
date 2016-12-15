@@ -4,6 +4,8 @@ export function createStore(reducer, initial = {}) {
     return {
         dispatch(change) {
             state = reducer(state, change) || state;
+            // before passing new state save it to the storage
+            sessionStorage.defaultState = JSON.stringify(state);
             for(let listener of listeners) {
                 listener(state);
             }

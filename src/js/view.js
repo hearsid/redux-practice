@@ -25,11 +25,25 @@ function renderApp(input, todoList) {
  * @description It will be a concatenation of the todoApp and filter bar
  */
 function renderFilterBar() {
+    var filterOptions = [
+        { title: 'Show all', id: 'showAll'},
+        { title: 'Show open', id: 'showOpen'},
+        { title: 'Show closed', id: 'showClosed'}
+    ];
+    var filterOptionsView = filterOptions.map(renderFilterRadioButton).join('');
     return `<div id="filterBar">
-          <input type="radio" name="filter" value="Show all" checked> Show all <br>
-          <input type="radio" name="filter" value="Show open" > Show open <br>
-          <input type="radio" name="filter" value="Show closed" > Show closed <br>
+            ${filterOptionsView}
     </div>`;
+}
+
+function renderFilterRadioButton(option) {
+    return `
+           <input type="radio" 
+                   name="filter" 
+                   class="filter_selection"
+                   value="${option.title}" 
+                   data-id="${option.id}" ${(option.id == 1) ? ' checked' : ''}>${option.title}<br>   
+    `;
 }
 function renderAddTodoAtTop(input, todoList) {
     return `<div id="app">

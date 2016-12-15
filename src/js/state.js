@@ -25,6 +25,11 @@ const initialState = {
     ]
 };
 
+/**
+ * @description This is the reducer, it can return the new state
+ * @param state
+ * @param change
+ */
 function todoChangeHandler(state, change) {
     switch(change.type) {
         case 'ADD_TODO':
@@ -42,7 +47,40 @@ function todoChangeHandler(state, change) {
                 }
             }
             break;
+        // Don't need to create another change handler since the change will be in the todos I can add the cases here
+
+        case 'SHOW_ALL_TODO':
+            // do nothing
+            return state;
+            break;
+
+        case 'SHOW_OPEN_TODO':
+            var newState = {};
+            for( let todo of state.todos) {
+                if(todo.done) {
+                    newState.todos.push(todo)
+                }
+            }
+            return newState;
+        break;
+
+        case 'SHOW_CLOSED_TODO':
+            var newState = {};
+            for( let todo of state.todos) {
+                if(!todo.done) {
+                    newState.todos.push(todo)
+                }
+            }
+            return newState;
+        break;
+
+
+
     }
 }
 
+
+
 export const todos = createStore(todoChangeHandler, initialState);
+
+export const filters = createStore()
